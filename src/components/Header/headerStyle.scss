@@ -1,0 +1,26 @@
+@function px-to-rem($px-value) {
+   @return $px-value / 16 * 1rem
+}
+
+.header {
+   margin-block-start: px-to-rem(73);
+   margin-inline: auto;
+   text-align: center;
+   max-width: 40ch;
+   padding-inline: px-to-rem(35);
+}
+
+.header__title {
+   line-height: px-to-rem(26.06);
+   font-size: px-to-rem(20);
+   font-weight: 500;
+   color: #F9F4DA;
+   margin-block-end: px-to-rem(10);
+}
+
+.header__description {
+   color: #8E8E8E;
+   font-size: px-to-rem(14);
+   font-weight: 500;
+   line-height: px-to-rem(18.24);
+}

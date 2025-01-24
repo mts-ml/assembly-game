@@ -1,0 +1,33 @@
+@function px-to-rem($px-value) {
+   @return $px-value / 16 * 1rem
+}
+
+
+.languages {
+   text-align: center;
+   padding-inline: px-to-rem(43);
+}
+
+.language__button {
+   position: relative;
+   margin: px-to-rem(1);
+   font-size: px-to-rem(12);
+   font-weight: 700;
+   border-radius: px-to-rem(3);
+   padding: px-to-rem(4.5);
+   border: none;
+}
+
+.lost::before {
+   content: "💀";
+   position: absolute;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   height: 100%;
+   width: 100%;
+   font-size: 0.85rem;
+   top: 0;
+   left: 0;
+   background-color: rgba(0, 0, 0, 0.7);
+}

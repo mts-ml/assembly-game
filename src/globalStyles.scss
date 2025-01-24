@@ -1,0 +1,179 @@
+@function px-to-rem($px-value) {
+   @return $px-value / 16 * 1rem
+}
+
+* {
+   margin: 0;
+   padding: 0;
+}
+
+*,
+*::before,
+*::after {
+   box-sizing: border-box;
+}
+
+body,
+button,
+input,
+textarea,
+select {
+   font-family: 'Hanken Grotesk', sans-serif;
+}
+
+body {
+   background-color: #282726;
+   display: grid;
+   place-items: center;
+   min-height: 100vh;
+}
+
+
+
+.app__button {
+   display: block;
+   width: px-to-rem(228);
+   height: px-to-rem(40);   
+   margin: px-to-rem(36) auto px-to-rem(73);
+   background-color: #11B5E5;
+   color: #1E1E1E;
+   font-size: px-to-rem(16);
+   font-weight: 600;
+   border: 1px solid #D7D7D7;
+   border-radius: px-to-rem(4);
+   padding: px-to-rem(6) px-to-rem(12);
+   cursor: pointer;
+}
+
+
+
+
+.word {
+   text-align: center;
+   margin-block-start: px-to-rem(36);
+}
+
+.word__span {
+   text-transform: uppercase;
+   background-color: #323232;
+   color: #F9F4DA;
+   padding: px-to-rem(6);
+   border-bottom: 1px solid #F9F4DA;
+   margin-inline: px-to-rem(2);
+   font-size: px-to-rem(18);
+   font-weight: 700;
+   display: inline-block;
+   height: px-to-rem(40);
+   width: px-to-rem(40);
+}
+
+
+
+
+.keyboard {
+   text-align: center;
+   margin-block-start: px-to-rem(36);
+   max-width: px-to-rem(594);
+   margin-inline: px-to-rem(57);
+}
+
+.keyboard__button {
+   width: px-to-rem(40);
+   height: px-to-rem(40);
+   padding: px-to-rem(6);
+   border-radius: px-to-rem(4);
+   border: 1px solid #D7D7D7;
+   margin: px-to-rem(6);
+   text-transform: capitalize;
+   color: #1E1E1E;
+   background-color: #FCBA29;
+   font-size: px-to-rem(16);
+   font-weight: 600;
+   cursor: pointer;
+}
+
+.correct {
+   background-color: #10A95B;
+}
+
+.incorrect {
+   background-color: #EC5D49;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* hanken-grotesk-regular - latin */
+@font-face {
+   font-display: swap;
+   /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+   font-family: 'Hanken Grotesk';
+   font-style: normal;
+   font-weight: 400;
+   src: url('./assets/fonts/hanken-grotesk-v8-latin-regular.woff2') format('woff2');
+   /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* hanken-grotesk-500 - latin */
+@font-face {
+   font-display: swap;
+   /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+   font-family: 'Hanken Grotesk';
+   font-style: normal;
+   font-weight: 500;
+   src: url('./assets/fonts/hanken-grotesk-v8-latin-500.woff2') format('woff2');
+   /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* hanken-grotesk-600 - latin */
+@font-face {
+   font-display: swap;
+   /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+   font-family: 'Hanken Grotesk';
+   font-style: normal;
+   font-weight: 600;
+   src: url('./assets/fonts/hanken-grotesk-v8-latin-600.woff2') format('woff2');
+   /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* hanken-grotesk-700 - latin */
+@font-face {
+   font-display: swap;
+   /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+   font-family: 'Hanken Grotesk';
+   font-style: normal;
+   font-weight: 700;
+   src: url('./assets/fonts/hanken-grotesk-v8-latin-700.woff2') format('woff2');
+   /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* hanken-grotesk-800 - latin */
+@font-face {
+   font-display: swap;
+   /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+   font-family: 'Hanken Grotesk';
+   font-style: normal;
+   font-weight: 800;
+   src: url('./assets/fonts/hanken-grotesk-v8-latin-800.woff2') format('woff2');
+   /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* hanken-grotesk-900 - latin */
+@font-face {
+   font-display: swap;
+   /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+   font-family: 'Hanken Grotesk';
+   font-style: normal;
+   font-weight: 900;
+   src: url('./assets/fonts/hanken-grotesk-v8-latin-900.woff2') format('woff2');
+   /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
