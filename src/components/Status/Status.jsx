@@ -54,7 +54,7 @@ export default function Status(props) {
    })
 
    return (
-      <section className={classname}>
+      <section aria-live='polite' className={classname}>
          {renderGameStatus()}
       </section>
    )
