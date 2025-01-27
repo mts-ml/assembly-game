@@ -13,7 +13,9 @@
     "clsx": "^2.1.1",
     "nanoid": "^5.0.9",
     "react": "^19.0.0",
+    "react-confetti": "^6.2.2",
     "react-dom": "^19.0.0",
+    "react-use": "^17.6.0",
     "sass": "^1.83.4"
   },
   "devDependencies": {
