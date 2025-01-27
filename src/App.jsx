@@ -17,7 +17,7 @@ function App() {
 
    // State to store the secret word
    const [word, setWord] = useState(() => getRandomWord())
-   console.log(word)
+   
    // State with the letters guessed by the player
    const [guessedLetters, setGuessedLetters] = useState([])
 
