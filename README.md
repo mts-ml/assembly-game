@@ -1,8 +1,14 @@
-# React + Vite
+# Overview
+This is an interactive word guessing game where the player needs to guess the secret word one letter at a time. The game includes a dynamic keyboard that users can interact with to make their guesses. The objective is to guess all the letters of the word before running out of attempts. If the player guesses the word correctly, they win, otherwise, the game ends when too many incorrect guesses are made.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The game features real-time tracking of correct and incorrect guesses, visual feedback on the guessed letters, and accessibility improvements to enhance the overall experience.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## Technology Stack
+React: The application is built with React for dynamic, component-based UI updates.
+CSS Modules & SCSS: Styling with SCSS for a modular and maintainable design.
+Nanoid: Used for generating unique keys for dynamically created components like letters and buttons.
+clsx: A utility for dynamically applying CSS class names based on conditions.
+
+[Preview Site]()
