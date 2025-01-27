@@ -33,7 +33,7 @@ body {
 .app__button {
    display: block;
    width: px-to-rem(228);
-   height: px-to-rem(40);   
+   height: px-to-rem(40);
    margin: px-to-rem(36) auto px-to-rem(73);
    background-color: #11B5E5;
    color: #1E1E1E;
@@ -67,6 +67,12 @@ body {
    width: px-to-rem(40);
 }
 
+.error {
+   color: #EC5D49;
+}
+
+
+
 
 
 
@@ -90,6 +96,11 @@ body {
    font-size: px-to-rem(16);
    font-weight: 600;
    cursor: pointer;
+
+   &:disabled {
+      cursor: not-allowed;
+      opacity: .2;
+   }
 }
 
 .correct {
@@ -102,6 +113,17 @@ body {
 
 
 
+.sr-only {
+   position: absolute;
+   width: 1px;
+   height: 1px;
+   padding: 0;
+   margin: -1px;
+   overflow: hidden;
+   clip: rect(0, 0, 0, 0);
+   white-space: nowrap;
+   border: 0;
+}
 
 
 
