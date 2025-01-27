@@ -5,6 +5,10 @@ import { nanoid } from 'nanoid'
 import { useState } from 'react'
 import clsx from 'clsx'
 import { languages } from './language' // Array with languages
+import { getRandomWord } from './util'
+
+import Confetti from 'react-confetti'
+import { useWindowSize } from 'react-use'
 
 import './globalStyles.scss'
 
@@ -12,32 +16,42 @@ import './globalStyles.scss'
 function App() {
 
    // State to store the secret word
-   const [word, setWord] = useState('react')
-
+   const [word, setWord] = useState(() => getRandomWord())
+   console.log(word)
    // State with the letters guessed by the player
    const [guessedLetters, setGuessedLetters] = useState([])
 
    const wrongGuessCount = guessedLetters.filter(letter => !word.includes(letter)).length
 
-   const rightGuessCount = guessedLetters.filter(letter => word.includes(letter)).length
-
-   const isGameWon = rightGuessCount === word.length
+   const isGameWon = word.split('').every(letter => guessedLetters.includes(letter))
 
    const isGameLost = wrongGuessCount === languages.length - 1
 
    const isGameOver = isGameWon || isGameLost
 
+   const guessesLeft = languages.length - wrongGuessCount
+
    const lastGuessedLetter = guessedLetters[guessedLetters.length - 1]
    const isLastLetterIncorrect = guessedLetters.length > 0 && !word.includes(lastGuessedLetter)
 
    // At first show the secret letter with '?', if the guessedLetters array contains one of the letters, shows it.
-   const misteriousWord = word.split('').map(letter => (
-      <span
-         className='word__span'
-         key={nanoid()}
-      >{guessedLetters.includes(letter) ? letter : '?'}
-      </span>
-   ))
+   const misteriousWord = word.split('').map(letter => {
+      const revealLetter = isGameLost || guessedLetters.includes(letter)
+
+      const className = clsx({
+         word__span: true,
+         error: isGameLost && !guessedLetters.includes(letter)
+      }
+      )
+
+      return (
+         <span
+            className={className}
+            key={nanoid()}>
+            {revealLetter ? letter : '?'}
+         </span>
+      )
+   })
 
 
    // Function to add a guessed letter to the state, can't add the same letter.
@@ -74,7 +88,9 @@ function App() {
                   className={whichClass}
                   onClick={() => addGuessedLetter(letter)}
                   key={nanoid()}
-                  disabled={isGameOver} // isGameOver === True, disable all letters
+                  disabled={isGameOver}  // isGameOver === True, disable all letters
+                  aria-label={`Letter ${letter}`}
+                  aria-disabled={guessedLetters.includes(letter)}
                > {letter}
                </button >
             )
@@ -82,6 +98,14 @@ function App() {
       )
    }
 
+   // Start a new game
+   function newGame() {
+      setWord(getRandomWord())
+      setGuessedLetters([])
+   }
+
+   // Used in Confetti
+   const { width, height } = useWindowSize()
 
    return (
       <main>
@@ -95,6 +119,25 @@ function App() {
             wrongGuessCount={wrongGuessCount}
          />
 
+         {/* Accessbility */}
+         <section
+            className="sr-only"
+            aria-live="polite">
+            <p>
+               {word.includes(lastGuessedLetter) ?
+                  `Correct! The letter ${lastGuessedLetter} is in the word.` :
+                  `Sorry, the letter ${lastGuessedLetter} is not in the word.`}
+
+               You have {guessesLeft} attempts left.
+            </p>
+
+            <p>
+               Current word: {word.split("").map(letter =>
+                  guessedLetters.includes(letter) ? letter + "." : "blank.")
+                  .join(" ")}
+            </p>
+         </section>
+
          <Languages
             wrongGuessCount={wrongGuessCount}
          />
@@ -107,7 +150,9 @@ function App() {
             {renderKeyboard()}
          </section>
 
-         {isGameOver && <button className="app__button">New Game</button>}
+         {isGameOver && <button onClick={newGame} className="app__button">New Game</button>}
+
+         {isGameWon && <Confetti width={width} height={height} />}
       </main>
    )
 }
