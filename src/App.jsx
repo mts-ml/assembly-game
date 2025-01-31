@@ -17,7 +17,7 @@ function App() {
 
    // State to store the secret word
    const [word, setWord] = useState(() => getRandomWord())
-   
+
    // State with the letters guessed by the player
    const [guessedLetters, setGuessedLetters] = useState([])
 
@@ -29,7 +29,7 @@ function App() {
 
    const isGameOver = isGameWon || isGameLost
 
-   const guessesLeft = languages.length - wrongGuessCount
+   const guessesLeft = (languages.length - 1) - wrongGuessCount
 
    const lastGuessedLetter = guessedLetters[guessedLetters.length - 1]
    const isLastLetterIncorrect = guessedLetters.length > 0 && !word.includes(lastGuessedLetter)
@@ -109,7 +109,9 @@ function App() {
 
    return (
       <main>
-         <Header />
+         <Header
+            guessesLeft={guessesLeft}
+         />
 
          <Status
             gameWon={isGameWon}
